@@ -13,11 +13,9 @@ tasgs = {
     "MOVIES": "Movies",
 }
 
+
 @movie_router.get(
-    "/movies",
-    tags=[tasgs["MOVIES"]],
-    response_model=List[Movie],
-    status_code=200
+    "/movies", tags=[tasgs["MOVIES"]], response_model=List[Movie], status_code=200
 )
 def get_Movies() -> List[Movie]:
     db = Session()
@@ -30,7 +28,7 @@ def get_Movies() -> List[Movie]:
 )
 def get_Movie(id: int = Path(le=2000, ge=0)) -> Movie:
     db = Session()
-    movie_find =   MovieService(db).get_movie(id)
+    movie_find = MovieService(db).get_movie(id)
     if not movie_find:
         return JSONResponse(status_code=404, content={"message": "Movie not found"})
     return JSONResponse(status_code=200, content=jsonable_encoder(movie_find))

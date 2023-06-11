@@ -1,6 +1,6 @@
-
 from pydantic import BaseModel, Field
 from typing import Optional
+
 
 class Movie(BaseModel):
     id: Optional[int] = None
@@ -21,4 +21,3 @@ class Movie(BaseModel):
         max_length=50,
     )
     year: int = Field(default=2023, le=2040)
-

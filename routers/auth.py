@@ -2,7 +2,9 @@ from fastapi import APIRouter
 from fastapi.responses import JSONResponse
 from jwt_manager import create_token
 from schema.auth import User
+
 auth_router = APIRouter()
+
 
 @auth_router.post("/login", tags=["Auth"], response_model=dict, status_code=200)
 def auth(user: User) -> dict:
