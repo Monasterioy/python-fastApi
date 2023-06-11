@@ -5,7 +5,7 @@ from jwt_manager import create_token, validate_token
 from config.database import engine, Base
 from middlewares.error_handler import ErrorHandler
 from routers.movie import movie_router
-from routers.auth import auth_router 
+from routers.auth import auth_router
 
 app = FastAPI(
     title="FastAPI CURSO JOSE MONASTERIO",
@@ -19,11 +19,12 @@ app.include_router(auth_router)
 
 Base.metadata.create_all(bind=engine)
 
-tasgs ={
-    "HOME": 'Home',
-    'MOVIES': 'Movies',
-    "Auth": 'Auth',
+tasgs = {
+    "HOME": "Home",
+    "MOVIES": "Movies",
+    "Auth": "Auth",
 }
+
 
 class Config:
     schema_extra = {
@@ -33,6 +34,6 @@ class Config:
             "overview": "Descripción de la película",
             "year": 2022,
             "rating": 9.8,
-            "category" : "Acción"
+            "category": "Acción",
         }
     }
